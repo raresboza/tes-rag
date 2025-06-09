@@ -10,12 +10,12 @@ def main():
 
     agent = get_agent()
 
-    inputs = {"messages": [HumanMessage(content="Where is the Thieves Guild located in Skyrim?")]}
+    inputs = {"messages": [HumanMessage(content="What is controversial about Tiber Septim?")]}
     config = {"configurable": {"thread_id": "1"}}
 
     print(agent.invoke(input=inputs, config=config))
-    inputs = {"messages": [HumanMessage(content="Is it safe there?")]}
-    print(agent.invoke(input=inputs, config=config))
+    #inputs = {"messages": [HumanMessage(content="Is it safe there?")]}
+    #   print(agent.invoke(input=inputs, config=config))
 
 if __name__ == "__main__":
     main()

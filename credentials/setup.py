@@ -8,5 +8,5 @@ def read_credentials(file_path):
 
 
 def setup_credentials():
-    api_key = read_credentials("google_api_key.txt")
+    api_key = read_credentials("credentials/google_api_key.txt")
     os.environ["GOOGLE_API_KEY"] = api_key
