@@ -6,6 +6,7 @@ from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import add_messages, StateGraph, START, END
 
 from backend.agent.llm_prompts import tes_llm_agent_prompt
+from backend.agent.reranker import rerank
 from backend.database_utils.vectore_store_manager import VectorStoreManager
 
 
@@ -15,8 +16,8 @@ class State(TypedDict):
 
 def retrieve(state: State, manager: VectorStoreManager):
     query = state['messages'][-1].text()
-    print(query)
-    search_results = manager.search(query, k=5)
+    search_results = manager.search(query, k=20)
+    search_results = rerank(query, search_results, 10)
     docs_content = f"Documents retrieved for {query}" + "\n\n".join(doc.page_content for doc in search_results)
     return {"messages": [ToolMessage(content=docs_content, tool_call_id="tool_id")]}
 
