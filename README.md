@@ -9,27 +9,22 @@ This project is a RAG (Retrieval-Augmented Generation) system for The Elder Scro
     pip install uv
     ```
 
-2.  **Create and activate the virtual environment:**
-    ```bash
-    uv venv
-    ```
-
-3.  **Install the dependencies:**
+2.  **Install the dependencies:**
     ```bash
     uv sync
     ```
 
-4.  **Set up the vector store:**
+3.  **Set up the vector store:**
     ```bash
     uv run python scripts/setup_vector_store.py
     ```
 
-5.  **Run the backend:**
+4.  **Run the backend:**
     ```bash
     uv run uvicorn backend.app.main:app --reload
     ```
 
-6.  **Run the frontend:**
+5.  **Run the frontend:**
     ```bash
     uv run streamlit run frontend/app.py
     ```
