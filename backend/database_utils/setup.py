@@ -12,10 +12,7 @@ from backend.database_utils.vectore_store_manager import VectorStoreManager
 def scrape_documents(wiki_links: List[str]) -> List[Document]:
     loader = WebBaseLoader(
         web_paths=wiki_links,
-        bs_kwargs=dict(
-            parse_only=bs4.SoupStrainer(class_="mw-parser-output")
-        ),
-
+        bs_kwargs=dict(parse_only=bs4.SoupStrainer(class_="mw-parser-output")),
     )
 
     docs = []

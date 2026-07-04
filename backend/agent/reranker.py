@@ -3,7 +3,8 @@ from typing import List
 from langchain_core.documents import Document
 from sentence_transformers import CrossEncoder
 
-cross_encoder = CrossEncoder('cross-encoder/ms-marco-MiniLM-L-6-v2')
+cross_encoder = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2")
+
 
 def rerank(query, docs: List[Document], keep=10):
     pairs = [(query, doc.page_content) for doc in docs]

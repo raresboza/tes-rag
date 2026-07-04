@@ -15,15 +15,19 @@ class State(TypedDict):
 
 
 def retrieve(state: State, manager: VectorStoreManager):
-    query = state['messages'][-1].text()
+    query = state["messages"][-1].text()
     search_results = manager.search(query, k=20)
     search_results = rerank(query, search_results, 10)
-    docs_content = f"Documents retrieved for {query}" + "\n\n".join(doc.page_content for doc in search_results)
+    docs_content = f"Documents retrieved for {query}" + "\n\n".join(
+        doc.page_content for doc in search_results
+    )
     return {"messages": [ToolMessage(content=docs_content, tool_call_id="tool_id")]}
 
 
 def answer(state: State, model):
-    conversation_messages = [SystemMessage(content=tes_llm_agent_prompt)] + state['messages']
+    conversation_messages = [SystemMessage(content=tes_llm_agent_prompt)] + state[
+        "messages"
+    ]
     response = model.invoke(conversation_messages)
     return {"messages": [response]}
 
