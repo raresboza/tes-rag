@@ -3,7 +3,7 @@ import os
 
 def read_credentials(file_path):
     """Read API key from text file"""
-    with open(file_path, 'r') as file:
+    with open(file_path, "r") as file:
         return file.read().strip()
 
 
