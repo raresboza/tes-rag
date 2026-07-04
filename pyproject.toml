@@ -48,3 +48,8 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["backend", "frontend"]
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.6.0",
+]
